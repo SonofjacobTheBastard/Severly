@@ -1,0 +1,16 @@
+FROM postgres
+
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=postgres
+ENV POSTGRES_DB=Severly
+
+# copy files to run when docker container launches ===>
+
+# init server types table
+COPY a_server_types.sql /docker-entrypoint-initdb.d/
+# init servers table
+COPY b_servers.sql /docker-entrypoint-initdb.d/
+# generate server types inside the server type table
+COPY c_generate_types.sql /docker-entrypoint-initdb.d/
+# init stub_data
+COPY d_stub_data.sql /docker-entrypoint-initdb.d/

@@ -1,0 +1,12 @@
+from node
+
+# COPY package*.json ./
+
+WORKDIR /usr/app
+COPY ./ /usr/app
+RUN npm install
+
+
+# COPY . .
+
+CMD npm run api
